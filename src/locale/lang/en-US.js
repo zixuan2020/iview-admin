@@ -34,5 +34,6 @@ export default {
   error_store_page: 'Error Collection',
   error_logger_page: 'Error Logger',
   query: 'Query',
-  params: 'Params'
+  params: 'Params',
+  account_error: 'The username and password are incorrect, please re-enter'
 }

@@ -122,6 +122,7 @@ export default {
     handleCollapsedChange (state) {
       this.collapsed = state
     },
+    // 处理关闭标签
     handleCloseTag (res, type, route) {
       if (type === 'all') {
         this.turnToPage(this.$config.homeName)
@@ -158,7 +159,7 @@ export default {
       route: this.$store.state.app.homeRoute
     })
     this.setBreadCrumb(this.$route)
-    // 设置初始语言
+    // 设置初始语言 初始化语言默认为中文简体
     this.setLocal(this.$i18n.locale)
     // 如果当前打开页面不在标签栏中，跳到homeName页
     if (!this.tagNavList.find(item => item.name === this.$route.name)) {

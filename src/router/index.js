@@ -20,7 +20,7 @@ const turnTo = (to, access, next) => {
 }
 
 router.beforeEach((to, from, next) => {
-  iView.LoadingBar.start()
+  iView.LoadingBar.start() // 开启浏览器进度条
   const token = getToken()
   if (!token && to.name !== LOGIN_PAGE_NAME) {
     // 未登录且要跳转的页面不是登录页
@@ -53,7 +53,7 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach(to => {
-  iView.LoadingBar.finish()
+  iView.LoadingBar.finish() // 完成浏览器进度条
   window.scrollTo(0, 0)
 })
 
