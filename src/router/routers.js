@@ -50,63 +50,51 @@ export default [
       }
     ]
   },
+
   {
-    path: '',
-    name: 'doc',
-    meta: {
-      title: '文档',
-      href: 'https://lison16.github.io/iview-admin-doc/#/',
-      icon: 'ios-book'
-    }
-  },
-  {
-    path: '/multilevel',
-    name: 'multilevel',
+    path: '/authorityManagement',
+    name: 'authorityManagement',
     meta: {
       icon: 'md-menu',
-      title: '多级菜单'
+      title: '权限管理'
     },
     component: Main,
     children: [
       {
-        path: 'level_2_1',
-        name: 'level_2_1',
+        path: 'user-manager',
+        name: 'user-manager',
         meta: {
-          icon: 'md-funnel',
-          title: '二级-1'
+          icon: 'ios-person',
+          title: '用户管理'
         },
-        component: () => import('@/view/multilevel/level-2-1.vue')
+        component: () => import('@/view/authority-management/user-manager.vue')
       },
       {
-        path: 'level_2_2',
-        name: 'level_2_2',
+        path: 'role-manager',
+        name: 'role-manager',
         meta: {
-          access: ['super_admin'],
-          icon: 'md-funnel',
-          showAlways: true,
-          title: '二级-2'
+          icon: 'ios-people',
+          title: '角色管理'
         },
-        component: parentView,
-        children: [
-          {
-            path: 'level_2_2_1',
-            name: 'level_2_2_1',
-            meta: {
-              icon: 'md-funnel',
-              title: '三级'
-            },
-            component: () => import('@/view/multilevel/level-2-2/level-3-1.vue')
-          }
-        ]
+        component: () => import('@/view/authority-management/role-manager.vue')
       },
       {
-        path: 'level_2_3',
-        name: 'level_2_3',
+        path: 'department-management',
+        name: 'department-management',
         meta: {
-          icon: 'md-funnel',
-          title: '二级-3'
+          icon: 'ios-apps-outline',
+          title: '部门管理'
         },
-        component: () => import('@/view/multilevel/level-2-3.vue')
+        component: () => import('@/view/authority-management/department-management.vue')
+      },
+      {
+        path: 'menu-management',
+        name: 'menu-management',
+        meta: {
+          icon: 'ios-menu',
+          title: '菜单管理'
+        },
+        component: () => import('@/view/authority-management/menu-management.vue')
       }
     ]
   },
