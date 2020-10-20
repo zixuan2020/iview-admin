@@ -12,6 +12,20 @@ export const login = ({userName, password}) => {
   })
 }
 
+export const getUserList = (pageNum, pageSize) => {
+  if (!pageNum) pageNum = 1
+  if (!pageSize) pageSize = 10
+
+  return axios.request({
+    url: 'user/list',
+    params: {
+      pageNum,
+      pageSize
+    },
+    method: 'get'
+  })
+}
+
 export const getUserInfo = (token) => {
   return axios.request({
     url: 'get_info',
