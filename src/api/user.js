@@ -26,12 +26,52 @@ export const getUserList = (pageNum, pageSize) => {
   })
 }
 
-export const getUserInfo = (token) => {
+export const queryUser = (pageNum, pageSize, username) => {
+  if (!pageNum) pageNum = 1
+  if (!pageSize) pageSize = 10
+
   return axios.request({
-    url: 'get_info',
+    url: 'user/list',
     params: {
-      token
+      pageNum,
+      pageSize,
+      username
     },
+    method: 'get'
+  })
+}
+
+export const insertUser = (user) => {
+  const data = user
+  return axios.request({
+    url: 'user/insertUser',
+    data,
+    method: 'post'
+  })
+}
+
+export const updateUser = (user) => {
+  const data = user
+  return axios.request({
+    url: 'user/saveUser',
+    data,
+    method: 'post'
+  })
+}
+
+export const delUser = (id) => {
+  return axios.request({
+    url: 'user/delUser',
+    params: {
+      id
+    },
+    method: 'get'
+  })
+}
+
+export const getUserInfo = () => {
+  return axios.request({
+    url: 'user/verify',
     method: 'get'
   })
 }

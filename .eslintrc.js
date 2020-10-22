@@ -13,6 +13,7 @@ module.exports = {
     'no-undef': 'off',
     'no-unused-vars': 'off',
     'eqeqeq': 'off',
+    'handle-callback-err': 'off',
 
   },
   parserOptions: {

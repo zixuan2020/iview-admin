@@ -61,40 +61,40 @@ export default [
     component: Main,
     children: [
       {
-        path: 'user-manager',
-        name: 'user-manager',
+        path: 'user',
+        name: 'user',
         meta: {
           icon: 'ios-person',
           title: '用户管理'
         },
-        component: () => import('@/view/authority-management/user-manager.vue')
+        component: () => import('@/view/authority-management/user')
       },
       {
-        path: 'role-manager',
-        name: 'role-manager',
+        path: 'role',
+        name: 'role',
         meta: {
           icon: 'ios-people',
           title: '角色管理'
         },
-        component: () => import('@/view/authority-management/role-manager.vue')
+        component: () => import('@/view/authority-management/role')
       },
       {
-        path: 'department-management',
-        name: 'department-management',
+        path: 'department',
+        name: 'department',
         meta: {
           icon: 'ios-apps-outline',
           title: '部门管理'
         },
-        component: () => import('@/view/authority-management/department-management.vue')
+        component: () => import('@/view/authority-management/department')
       },
       {
-        path: 'menu-management',
-        name: 'menu-management',
+        path: 'menu',
+        name: 'menu',
         meta: {
           icon: 'ios-menu',
           title: '菜单管理'
         },
-        component: () => import('@/view/authority-management/menu-management.vue')
+        component: () => import('@/view/authority-management/menu')
       }
     ]
   },

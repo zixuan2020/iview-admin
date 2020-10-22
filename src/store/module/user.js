@@ -45,7 +45,11 @@ export default {
             commit('setToken', data.data.token)
             commit('setUserName', data.data.username)
             commit('setUserId', data.data.id)
-            commit('setAvator', 'https://file.iviewui.com/dist/a0e88e83800f138b94d2414621bd9704.png')
+            if (data.data.avator) {
+              commit('setAvator', data.data.avator)
+            } else {
+              commit('setAvator', 'https://file.iviewui.com/dist/a0e88e83800f138b94d2414621bd9704.png')
+            }
             commit('setAccess', [])
           }
           resolve(data)
@@ -74,19 +78,23 @@ export default {
     getUserInfo ({ state, commit }) {
       return new Promise((resolve, reject) => {
         try {
-          /* getUserInfo(state.token).then(res => {
+          getUserInfo(state.token).then(res => {
             const data = res.data
-            commit('setAvator', data.avator)
-            commit('setUserName', data.name)
-            commit('setUserId', data.user_id)
-            commit('setAccess', data.access)
-            commit('setHasGetInfo', true)
-            resolve(data)
+            if (data.code == 200) {
+              commit('setAvator', 'https://file.iviewui.com/dist/a0e88e83800f138b94d2414621bd9704.png')
+              /* commit('setUserName', data.name)
+               commit('setUserId', data.user_id)
+               commit('setAccess', data.access) */
+              commit('setHasGetInfo', true)
+              resolve({ access: true })
+            } else {
+              commit('setToken', '')
+              commit('setAccess', [])
+              this.$router.push('login')
+            }
           }).catch(err => {
-            reject(err)
-          }) */
-
-          resolve({ access: true })
+            resolve({ access: false })
+          })
         } catch (error) {
           reject(error)
         }
