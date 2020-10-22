@@ -31,7 +31,7 @@ export const queryUser = (pageNum, pageSize, username) => {
   if (!pageSize) pageSize = 10
 
   return axios.request({
-    url: 'user/list',
+    url: 'user/query',
     params: {
       pageNum,
       pageSize,
