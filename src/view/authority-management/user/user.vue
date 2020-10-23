@@ -49,11 +49,13 @@
         </Row>
         <Row class-name="searchBar">
           <Col span="3" style="line-height: 30px">姓名:</Col>
-          <Col span="7"><Input clearable v-model="editUserObj.fullName" placeholder="姓名" style="width: 200px" /></Col>
+          <Col span="7"><Input clearable v-model="editUserObj.fullName" placeholder="姓名" style="width: 200px"/></Col>
         </Row>
         <Row class-name="searchBar">
           <Col span="3" style="line-height: 30px">是否禁用:</Col>
-          <Col span="7"><i-switch v-model="editUserObj.status" true-color="#13ce66" false-color="#ff4949" /></Col>
+          <Col span="7">
+            <i-switch v-model="editUserObj.status" true-color="#13ce66" false-color="#ff4949"/>
+          </Col>
         </Row>
       </p>
     </Modal>
@@ -70,24 +72,26 @@
           <Col span="7">{{editUserObj.id}}</Col>
         </Row>
         <Row class-name="searchBar">
-          <Col span="3" >手机号:</Col>
+          <Col span="3">手机号:</Col>
           <Col span="7">{{editUserObj.phone}}</Col>
         </Row>
         <Row class-name="searchBar">
-          <Col span="3" >邮箱:</Col>
+          <Col span="3">邮箱:</Col>
           <Col span="7">{{editUserObj.email}}</Col>
         </Row>
         <Row class-name="searchBar">
-          <Col span="3" >姓名:</Col>
+          <Col span="3">姓名:</Col>
           <Col span="7">{{editUserObj.fullName}}</Col>
         </Row>
         <Row class-name="searchBar">
-          <Col span="3" >登录地址:</Col>
+          <Col span="3">登录地址:</Col>
           <Col span="7">{{editUserObj.remoteIp}}</Col>
         </Row>
         <Row class-name="searchBar">
-          <Col span="3" >是否禁用:</Col>
-          <Col span="7"><i-switch disabled v-model="editUserObj.status" true-color="#13ce66" false-color="#ff4949" /></Col>
+          <Col span="3">是否禁用:</Col>
+          <Col span="7">
+            <i-switch disabled v-model="editUserObj.status" true-color="#13ce66" false-color="#ff4949"/>
+          </Col>
         </Row>
       </p>
     </Modal>
@@ -117,11 +121,13 @@
         </Row>
         <Row class-name="searchBar">
           <Col span="3" style="line-height: 30px">姓名:</Col>
-          <Col span="7"><Input clearable v-model="editUserObj.fullName" placeholder="姓名" style="width: 200px" /></Col>
+          <Col span="7"><Input clearable v-model="editUserObj.fullName" placeholder="姓名" style="width: 200px"/></Col>
         </Row>
         <Row class-name="searchBar">
-          <Col span="3" style="line-height: 30px">是否禁用:</Col>
-          <Col span="7"><i-switch v-model="editUserObj.status" true-color="#13ce66" false-color="#ff4949" /></Col>
+          <Col span="3" style="line-height: 30px">启用状态:</Col>
+          <Col span="7">
+            <i-switch v-model="editUserObj.status" true-color="#13ce66" false-color="#ff4949"/>
+          </Col>
         </Row>
       </p>
     </Modal>
@@ -198,7 +204,7 @@ export default {
             return h('div', [
               h('Button', {
                 props: {
-                  type: 'primary',
+                  type: 'warning',
                   size: 'small'
                 },
                 style: {
@@ -220,7 +226,7 @@ export default {
                 },
                 on: {
                   click: () => {
-                    this.lookUser(params.row)
+                    this.show(params.row)
                   }
                 }
               }, '编辑'),
@@ -323,15 +329,15 @@ export default {
       queryUser(this.pageNum, this.pageSize, this.searchUserName)
         .then(({data}) => {
           if (data.code == 200) {
-            this.pageNum = data.data.current
-            this.total = data.data.total
-            if (this.pageSize < 10) {
-              this.pageSize = 10
-            } else {
+            if (data.data.records.length > 0) {
+              this.pageNum = data.data.current
+              this.total = data.data.total
               this.pageSize = data.data.size
+              this.data = data.data.records
+              this.$Message.success('数据查询成功')
+            } else {
+              this.$Message.error('数据查询失败')
             }
-            this.data = data.data.records
-            /* this.$Message.success("数据查询成功") */
           } else {
             this.$Message.error('数据查询失败')
           }

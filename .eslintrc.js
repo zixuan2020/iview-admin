@@ -14,6 +14,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'eqeqeq': 'off',
     'handle-callback-err': 'off',
+    'camelcase': 'off',
 
   },
   parserOptions: {
