@@ -63,6 +63,7 @@
       v-model="isShowEdit"
       title="编辑角色"
       :loading="isLoading"
+      :styles="{height:'500px',overflow:'scroll'}"
       @on-ok="editRole">
       <p>
         <Row class-name="searchBar">
@@ -77,6 +78,9 @@
           <Col span="3" style="line-height: 30px">角色描述:</Col>
           <Col span="7"><Input clearable v-model="editRoleObj.description" placeholder="邮箱" style="width: 200px"/></Col>
         </Row>
+
+        <!--  授权菜单  -->
+        <Tree :data="data3" show-checkbox></Tree>
       </p>
     </Modal>
 
@@ -93,7 +97,8 @@
         </Row>
         <Row class-name="searchBar">
           <Col span="3" style="line-height: 30px">角色描述:</Col>
-          <Col span="7"><Input clearable v-model="editRoleObj.description" placeholder="角色描述" style="width: 200px"/></Col>
+          <Col span="7"><Input clearable v-model="editRoleObj.description" placeholder="角色描述" style="width: 200px"/>
+          </Col>
         </Row>
       </p>
     </Modal>
@@ -186,7 +191,88 @@ export default {
           }
         }
       ],
-      data: []
+      data: [],
+      // 授权菜单数据
+      data3: [
+        {
+          title: '一级菜单',
+          expand: true,
+          children: [
+            {
+              title: '用户管理',
+              expand: true,
+              children: [
+                {
+                  title: '添加用户'
+                },
+                {
+                  title: '删除用户'
+                },
+                {
+                  title: '更新用户'
+                },
+                {
+                  title: '查询用户'
+                }
+              ]
+            },
+            {
+              title: '角色管理',
+              expand: true,
+              children: [
+                {
+                  title: '添加角色'
+                },
+                {
+                  title: '删除角色'
+                },
+                {
+                  title: '更新角色'
+                },
+                {
+                  title: '查询角色'
+                }
+              ]
+            },
+            {
+              title: '部门管理',
+              expand: true,
+              children: [
+                {
+                  title: '添加部门'
+                },
+                {
+                  title: '删除部门'
+                },
+                {
+                  title: '更新部门'
+                },
+                {
+                  title: '查询部门'
+                }
+              ]
+            },
+            {
+              title: '菜单管理',
+              expand: true,
+              children: [
+                {
+                  title: '添加菜单'
+                },
+                {
+                  title: '删除菜单'
+                },
+                {
+                  title: '更新菜单'
+                },
+                {
+                  title: '查询菜单'
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   },
   methods: {

@@ -1,100 +1,50 @@
 <template>
   <Card dis-hover style="width:100%;height: 99%">
     <Row>
-      <Table stripe :loading = "loading"
-             :showHeader = false
-             border
-             :columns = "listcolumns"
-             :data = "listauth"
-             style = "overflow-y: hidden;max-height: 522px;" > </Table>
+      <Tree :data="data3" :load-data="loadData" show-checkbox></Tree>
     </Row>
   </Card>
 </template>
 
 <script>
-import {expandRow} from '@/components/authtable-expand'
 
 export default {
   data () {
     return {
-      listcolumns: [
+      data3: [
         {
-          title: '序号',
-          key: '_index',
-          className: 'index_css',
-          render: (h, params) => {
-            return h('div', [h('span', {
-              style: {
-                display: 'inline-block',
-                width: '100%',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-                textAlign: 'center'
-              }
-            },
-            params.row._index)])
-          }
+          title: '普通权限',
+          loading: false,
+          children: []
         },
         {
-          // 添加的expand
-          type: 'expand',
-          width: 20,
-          render: (h, params) => {
-            return h(expandRow, {
-              style: {
-                padding: 0
-              },
-              props: {
-                row: params.row
-              }
-            })
-          }
-        },
-        {
-          title: '权限名称',
-          key: 'Title',
-          className: 'Title_css',
-          ellipsis: true,
-          render: (h, params) => {
-            return h('div', [h('span', {
-              style: {
-
-                display: 'inline-block',
-                width: '100%',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap'
-              }
-            },
-            params.row.Title)])
-          }
-        }
-      ],
-      listauth: [
-        {
-          'Title': 'AA'
-
-        },
-        {
-          'Title': 'BB'
+          title: '高级权限',
+          loading: false,
+          children: []
         }
       ]
     }
   },
-  mounted () {},
-  methods: {},
-  created () {
-    // console.log("authotable_expend created: " + JSON.stringify(this.row.children))
-    var object = this.row.children
-    console.log('auth expand data:' + JSON.stringify(object))
-    this.listauth.splice(0)
-    object.forEach(r => {
-      this.listauth.push(r)
-    })
-    // console.log("listauth:" + JSON.stringify(this.listauth))
+  methods: {
+    loadData (item, callback) {
+      setTimeout(() => {
+        // 进行权限的查询
+        const data = [
+          {
+            title: 'children',
+            loading: false,
+            children: []
+          },
+          {
+            title: 'children',
+            loading: false,
+            children: []
+          }
+        ]
+        callback(data)
+      }, 1000)
+    }
   }
-
 }
 </script>
 
