@@ -80,7 +80,7 @@
         </Row>
 
         <!--  授权菜单  -->
-        <Tree :data="data3" show-checkbox></Tree>
+        <Tree :data="data3" @on-check-change="authorizationRoleChange" show-checkbox></Tree>
       </p>
     </Modal>
 
@@ -290,6 +290,11 @@ export default {
         this.pageSize = newPageSize
         this.queryRoleData()
       }
+    },
+
+    // 授权角色发生改变
+    authorizationRoleChange (e) {
+      console.log(e)
     },
 
     init () {

@@ -86,6 +86,7 @@ export default {
                commit('setUserId', data.user_id)
                commit('setAccess', data.access) */
               commit('setHasGetInfo', true)
+
               resolve({ access: true })
             } else {
               commit('setToken', '')

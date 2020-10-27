@@ -65,7 +65,8 @@ export default [
         name: 'user',
         meta: {
           icon: 'ios-person',
-          title: '用户管理'
+          title: '用户管理',
+          notCache: true
         },
         component: () => import('@/view/authority-management/user')
       },
@@ -74,7 +75,8 @@ export default [
         name: 'role',
         meta: {
           icon: 'ios-people',
-          title: '角色管理'
+          title: '角色管理',
+          notCache: true
         },
         component: () => import('@/view/authority-management/role')
       },
@@ -83,7 +85,8 @@ export default [
         name: 'department',
         meta: {
           icon: 'ios-apps-outline',
-          title: '部门管理'
+          title: '部门管理',
+          notCache: true
         },
         component: () => import('@/view/authority-management/department')
       },
@@ -92,11 +95,21 @@ export default [
         name: 'menu',
         meta: {
           icon: 'ios-menu',
-          title: '菜单管理'
+          title: '菜单管理',
+          notCache: true
         },
         component: () => import('@/view/authority-management/menu')
       }
     ]
+  },
+  {
+    path: '/system',
+    name: 'system',
+    meta: {
+      icon: 'md-menu',
+      title: '系统设置'
+    },
+    component: Main
   },
   {
     path: '/401',
