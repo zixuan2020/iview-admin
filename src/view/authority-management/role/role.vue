@@ -106,6 +106,7 @@
 </template>
 
 <script>
+
 import {getRoleList, getRoleByName, updateRole, deleteRole, insertRole} from '@/api/role'
 
 export default {

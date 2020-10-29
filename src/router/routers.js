@@ -64,7 +64,7 @@ export default [
         path: 'user',
         name: 'user',
         meta: {
-          icon: 'ios-person',
+          icon: 'custom-user iconfont',
           title: '用户管理',
           notCache: true
         },
@@ -74,7 +74,7 @@ export default [
         path: 'role',
         name: 'role',
         meta: {
-          icon: 'ios-people',
+          icon: 'custom-role iconfont',
           title: '角色管理',
           notCache: true
         },
@@ -84,7 +84,7 @@ export default [
         path: 'department',
         name: 'department',
         meta: {
-          icon: 'ios-apps-outline',
+          icon: 'custom-department iconfont',
           title: '部门管理',
           notCache: true
         },
@@ -94,7 +94,7 @@ export default [
         path: 'menu',
         name: 'menu',
         meta: {
-          icon: 'ios-menu',
+          icon: 'custom-menu iconfont',
           title: '菜单管理',
           notCache: true
         },
